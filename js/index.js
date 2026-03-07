@@ -9,6 +9,17 @@ let totalPemasukan = 0, totalPengeluaran = 0, saldo = 0;
 let kategoriAktif = "";
 let kelasAktif = "";
 
+// Putar suara sapaan saat halaman login ditampilkan
+window.onload = function() {
+  const speech = new SpeechSynthesisUtterance(
+    "Selamat datang di Sistem Keuangan SD Negeri Wonokerto"
+  );
+  speech.lang = "id-ID";   // Bahasa Indonesia
+  speech.rate = 0.8;       // Lebih pelan (default 1, makin kecil makin lambat)
+  speech.pitch = 1;        // Nada normal
+  window.speechSynthesis.speak(speech);
+};
+
 // ===== LOGIN =====
 function login() {
   const user = document.getElementById("username").value;
