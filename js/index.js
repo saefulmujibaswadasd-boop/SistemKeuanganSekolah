@@ -72,6 +72,28 @@ function tampilkanTransaksi() {
     tbody.innerHTML += row;
   });
 }
+// Fungsi tambah transaksi
+function tambahTransaksi() {
+  const tanggal = document.getElementById("tanggal").value;
+  const deskripsi = document.getElementById("deskripsi").value;
+  const nominal = parseInt(document.getElementById("nominal").value);
+  const kategori = document.getElementById("kategori").value;
+  const pengguna = document.getElementById("pengguna").value;
+  const kelas = document.getElementById("kelas").value;
+
+  // Masukkan ke array transaksi
+  transaksi.push({ tanggal, deskripsi, nominal, kategori, pengguna, kelas });
+
+  // Reset form
+  document.getElementById("formTransaksi").reset();
+
+  // Otomatis update tampilan
+  tampilkanTransaksi();
+  updateKartuRingkasan();
+  updateRingkasan(); // kalau ada ringkasan global
+
+  // Tidak ada lagi tanda tangan kepala sekolah ditampilkan
+}
 // ===== RINGKASAN =====
 function updateRingkasan() {
   totalPemasukan = transaksi.filter(t => t.nominal > 0).reduce((a,b)=>a+b.nominal,0);
@@ -194,18 +216,7 @@ function downloadPDF() {
       }
     });
 
-    let tanggal = new Date().toLocaleDateString("id-ID", {
-      day: "numeric", month: "long", year: "numeric"
-    });
-    doc.text("Wonosobo, " + tanggal, 140, 250);
-    doc.text("Kepala Sekolah,", 140, 260);
-    doc.text("(___________________)", 140, 280);
-    doc.text("Nama Kepala Sekolah", 140, 290);
-
-    doc.save("laporan_keuangan.pdf");
-  };
-}
-
+    
 // ===== PRINT =====
 function printReport() {
   window.print();
