@@ -57,32 +57,51 @@
 <body class="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500">
 
   <!-- Halaman Login -->
-  <section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-opacity-90">
-    <!-- Logo + Judul Instansi -->
-    <div class="flex flex-col items-center mb-6 text-white">
-      <div class="flex gap-6 mb-4">
-        <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
-        <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
-      </div>
-      <h2 class="judul-instansi">PEMERINTAH KABUPATEN WONOSOBO</h2>
-      <h3 class="judul-instansi">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
-      <h3 class="judul-instansi">SD NEGERI WONOKERTO</h3>
-      <p class="alamat">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
+<section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-opacity-90">
+  
+  <!-- Logo + Judul Instansi -->
+  <div class="flex flex-col items-center mb-6 text-white">
+    <div class="flex gap-6 mb-4">
+      <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
+      <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
+    </div>
+    <h2 class="judul-instansi">PEMERINTAH KABUPATEN WONOSOBO</h2>
+    <h3 class="judul-instansi">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
+    <h3 class="judul-instansi">SD NEGERI WONOKERTO</h3>
+    <p class="alamat">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
+  </div>
+
+  <!-- Halaman Login -->
+<section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-opacity-90">
+
+  <!-- Kop Instansi -->
+  <div class="flex items-center justify-between w-full px-12 mb-6 text-white">
+    <!-- Logo Sekolah kiri -->
+    <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
+
+    <!-- Judul Sistem di tengah -->
+    <div class="text-center">
+      <h2 class="font-bold text-lg">PEMERINTAH KABUPATEN WONOSOBO</h2>
+      <h3 class="font-bold text-md">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
+      <h3 class="font-bold text-md">SD NEGERI WONOKERTO</h3>
+      <p class="text-sm">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
+      <h2 class="mt-2 font-bold text-xl">
+        SISTEM | KEUANGAN | SD NEGERI WONOKERTO | 2026
+      </h2>
     </div>
 
-    <!-- Sapaan Sistem -->
-    <h2 class="judul-sapaan">
-      SISTEM | KEUANGAN | SD NEGERI WONOKERTO | 2026
-    </h2>
+    <!-- Logo Pemkab kanan -->
+    <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
+  </div>
 
-    <!-- Form Login -->
-    <div class="bg-white shadow-lg p-6 rounded w-96">
-      <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
-      <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
-      <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
-      <p id="loginError" class="text-red-600 text-sm mt-2 hidden">Username/Password salah!</p>
-    </div>
-  </section>
+  <!-- Form Login -->
+  <div class="bg-white shadow-lg p-6 rounded w-96">
+    <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
+    <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
+    <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
+    <p id="loginError" class="text-red-600 text-sm mt-2 hidden">Username/Password salah!</p>
+  </div>
+</section>
 
   <!-- Dashboard -->
   <section id="dashboard" class="hidden">
