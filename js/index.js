@@ -40,11 +40,13 @@ function login() {
 function filterKategori(kat) {
   kategoriAktif = kat;
   tampilkanTransaksi();
+  updateKartuRingkasan();   // update kartu sesuai filter
 }
 
 function filterByKelas() {
   kelasAktif = document.getElementById("kelasFilter").value;
   tampilkanTransaksi();
+  updateKartuRingkasan();   // update kartu sesuai filter
 }
 
 // ===== TAMPILKAN TRANSAKSI =====
@@ -70,7 +72,6 @@ function tampilkanTransaksi() {
     tbody.innerHTML += row;
   });
 }
-
 // ===== RINGKASAN =====
 function updateRingkasan() {
   totalPemasukan = transaksi.filter(t => t.nominal > 0).reduce((a,b)=>a+b.nominal,0);
@@ -109,7 +110,24 @@ function buatChart() {
     }
   });
 }
+function updateKartuRingkasan() {
+  let dataFilter = transaksi.filter(t => {
+    if (kategoriAktif && t.kategori !== kategoriAktif) return false;
+    if (kelasAktif) {
+      const kelasNum = parseInt(t.kelas);
+      if (kelasNum != kelasAktif) return false;
+    }
+    return true;
+  });
 
+  let pemasukan = dataFilter.filter(t => t.nominal > 0).reduce((a,b)=>a+b.nominal,0);
+  let pengeluaran = dataFilter.filter(t => t.nominal < 0).reduce((a,b)=>a+b.nominal,0);
+  let saldo = pemasukan + pengeluaran;
+
+  document.getElementById("pemasukanKategori").innerText = "Rp " + pemasukan.toLocaleString();
+  document.getElementById("pengeluaranKategori").innerText = "Rp " + Math.abs(pengeluaran).toLocaleString();
+  document.getElementById("saldoKategori").innerText = "Rp " + saldo.toLocaleString();
+}
 // ===== FORM =====
 function showForm() {
   document.getElementById("formTransaksi").classList.remove("hidden");
