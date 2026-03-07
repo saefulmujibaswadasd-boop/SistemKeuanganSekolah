@@ -57,7 +57,28 @@
       <div class="bg-white shadow p-4"><h2>Grafik Pemasukan & Pengeluaran</h2><canvas id="barChart"></canvas></div>
       <div class="bg-white shadow p-4"><h2>Rincian Kategori Dana</h2><canvas id="pieChart"></canvas></div>
     </section>
+<!-- Tab Navigasi Transaksi -->
+<div class="flex gap-2 mb-4">
+  <button onclick="filterKategori('Gentong')" class="bg-blue-500 text-white px-4 py-2 rounded">Gentong</button>
+  <button onclick="filterKategori('Dapur')" class="bg-blue-500 text-white px-4 py-2 rounded">Dapur</button>
+  <button onclick="filterKategori('MBG')" class="bg-blue-500 text-white px-4 py-2 rounded">MBG</button>
+  <button onclick="filterKategori('Amal')" class="bg-blue-500 text-white px-4 py-2 rounded">Amal</button>
+  <button onclick="filterKategori('LKS')" class="bg-blue-500 text-white px-4 py-2 rounded">LKS</button>
+</div>
 
+<!-- Filter kelas -->
+<div class="mb-4">
+  <label for="kelasFilter">Filter Kelas:</label>
+  <select id="kelasFilter" onchange="filterByKelas()" class="border p-2 rounded">
+    <option value="">Semua</option>
+    <option value="1">Kelas 1</option>
+    <option value="2">Kelas 2</option>
+    <option value="3">Kelas 3</option>
+    <option value="4">Kelas 4</option>
+    <option value="5">Kelas 5</option>
+    <option value="6">Kelas 6</option>
+  </select>
+</div>
     <!-- Tabel Transaksi -->
     <section class="p-6">
       <div class="bg-white shadow p-4">
