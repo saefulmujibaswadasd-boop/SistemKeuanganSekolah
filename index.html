@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Keuangan SD NEGERI WONOKERTO</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Print CSS -->
+  <style>
+    @media print {
+      button, header { display: none !important; }
+      body { margin: 20px; background: white !important; }
+      table { border-collapse: collapse; width: 100%; }
+      table, th, td { border: 1px solid black; }
+      th, td { padding: 6px; text-align: left; }
+      canvas { max-width: 100% !important; height: auto !important; }
+      .print-footer { margin-top: 40px; text-align: right; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Halaman Login -->
+  <section id="loginPage" class="h-screen flex items-center justify-center bg-blue-100">
+    <div class="bg-white shadow-lg p-6 rounded w-96">
+      <h2 class="text-center text-xl font-bold mb-4">Login Sistem Keuangan</h2>
+      <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
+      <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
+      <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
+      <p id="loginError" class="text-red-600 text-sm mt-2 hidden">Username/Password salah!</p>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard" class="hidden">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 text-center">
+      <h1 class="text-2xl font-bold">Sistem Keuangan SD NEGERI WONOKERTO</h1>
+    </header>
+
+    <!-- Ringkasan Keuangan -->
+    <section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
+      <div class="bg-white shadow p-4 text-center"><h2>Total Pemasukan</h2><p id="pemasukan" class="text-green-600 text-xl">Rp 0</p></div>
+      <div class="bg-white shadow p-4 text-center"><h2>Total Pengeluaran</h2><p id="pengeluaran" class="text-red-600 text-xl">Rp 0</p></div>
+      <div class="bg-white shadow p-4 text-center"><h2>Saldo Saat Ini</h2><p id="saldo" class="text-blue-600 text-xl">Rp 0</p></div>
+      <div class="bg-white shadow p-4 text-center"><h2>Jumlah Transaksi</h2><p id="transaksi" class="text-gray-600 text-xl">0</p></div>
+    </section>
+
+    <!-- Grafik -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+      <div class="bg-white shadow p-4"><h2>Grafik Pemasukan & Pengeluaran</h2><canvas id="barChart"></canvas></div>
+      <div class="bg-white shadow p-4"><h2>Rincian Kategori Dana</h2><canvas id="pieChart"></canvas></div>
+    </section>
+
+    <!-- Tabel Transaksi -->
+    <section class="p-6">
+      <div class="bg-white shadow p-4">
+        <h2 class="font-bold mb-4">Daftar Transaksi</h2>
+        <table class="table-auto w-full border">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border px-2">Tanggal</th>
+              <th class="border px-2">Deskripsi</th>
+              <th class="border px-2">Nominal</th>
+              <th class="border px-2">Kategori</th>
+              <th class="border px-2">Pengguna</th>
+              <th class="border px-2">Kelas</th>
+            </tr>
+          </thead>
+          <tbody id="tabelTransaksi"></tbody>
+        </table>
+        <div class="mt-4 flex gap-2">
+          <button onclick="showForm()" class="bg-green-500 text-white px-4 py-2 rounded">Tambah Transaksi</button>
+          <button onclick="downloadPDF()" class="bg-red-500 text-white px-4 py-2 rounded">Download PDF</button>
+          <button onclick="printReport()" class="bg-gray-500 text-white px-4 py-2 rounded">Print Laporan</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Tambah Transaksi -->
+    <div id="formTransaksi" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded shadow-lg w-96">
+        <h2 class="text-xl font-bold mb-4">Tambah Transaksi</h2>
+        <input id="tanggal" type="date" class="w-full border p-2 mb-2 rounded">
+        <input id="deskripsi" type="text" placeholder="Deskripsi" class="w-full border p-2 mb-2 rounded">
+        <input id="nominal" type="number" placeholder="Nominal (Rp)" class="w-full border p-2 mb-2 rounded">
+        <input id="kategori" type="text" placeholder="Kategori" class="w-full border p-2 mb-2 rounded">
+        <input id="pengguna" type="text" placeholder="Pengguna" class="w-full border p-2 mb-2 rounded">
+        <input id="kelas" type="text" placeholder="Kelas" class="w-full border p-2 mb-4 rounded">
+        <div class="flex gap-2">
+          <button onclick="simpanTransaksi()" class="bg-blue-600 text-white px-4 py-2 rounded">Simpan</button>
+          <button onclick="closeForm()" class="bg-gray-500 text-white px-4 py-2 rounded">Batal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer cetak -->
+    <div class="print-footer">
+      <p>Wonosobo, <span id="tanggalCetak"></span></p>
+      <p style="margin-top:40px;">Kepala Sekolah</p>
+      <p>(___________________)</p>
+      <p>Nama Kepala Sekolah</p>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script src="js/index.js"></script>
+</body>
+</html>
