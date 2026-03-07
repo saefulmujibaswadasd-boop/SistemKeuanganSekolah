@@ -74,45 +74,45 @@
   <!-- Halaman Login -->
 <section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-opacity-90">
 
-  <!-- Kop Instansi -->
-  <div class="flex items-center justify-between w-full px-12 mb-6 text-white">
-    <!-- Logo Sekolah kiri -->
-    <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
+<!-- Kop Instansi -->
+<div class="flex items-center justify-between w-full px-12 mb-6 text-white">
+  <!-- Logo Sekolah kiri -->
+  <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
 
-    <!-- Judul Sistem di tengah -->
-    <div class="text-center">
-      <h2 class="font-bold text-lg">PEMERINTAH KABUPATEN WONOSOBO</h2>
-      <h3 class="font-bold text-md">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
-      <h3 class="font-bold text-md">SD NEGERI WONOKERTO</h3>
-      <p class="text-sm">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
-      <h2 class="mt-2 font-bold text-xl">
-        SISTEM | KEUANGAN | SD NEGERI WONOKERTO | 2026
-      </h2>
-    </div>
-
-    <!-- Logo Pemkab kanan -->
-    <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
+  <!-- Judul Sistem di tengah -->
+  <div class="text-center flex-1">
+    <h2 class="font-bold text-lg">PEMERINTAH KABUPATEN WONOSOBO</h2>
+    <h3 class="font-bold text-md">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
+    <h3 class="font-bold text-md">SD NEGERI WONOKERTO</h3>
+    <p class="text-sm">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
+    <h2 class="mt-2 font-bold text-xl">
+      SISTEM | KEUANGAN | SD NEGERI WONOKERTO | 2026
+    </h2>
   </div>
 
-  <!-- Form Login -->
-  <div class="bg-white shadow-lg p-6 rounded w-96">
-    <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
-    <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
-    <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
-    <p id="loginError" class="text-red-600 text-sm mt-2 hidden">Username/Password salah!</p>
-  </div>
+  <!-- Logo Pemkab kanan -->
+  <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
+</div>
+
+<!-- Form Login -->
+<div class="bg-white shadow-lg p-6 rounded w-96">
+  <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
+  <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
+  <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
+  <p id="loginError" class="text-red-600 text-sm mt-2 hidden">Username/Password salah!</p>
+</div>
 </section>
 
-  <!-- Dashboard -->
-  <section id="dashboard" class="hidden">
-    <!-- Ringkasan Keuangan -->
-    <section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
-      <div class="bg-white shadow p-4 text-center"><h2>Total Pemasukan</h2><p id="pemasukan" class="text-green-600 text-xl">Rp 0</p></div>
-      <div class="bg-white shadow p-4 text-center"><h2>Total Pengeluaran</h2><p id="pengeluaran" class="text-red-600 text-xl">Rp 0</p></div>
-      <div class="bg-white shadow p-4 text-center"><h2>Saldo Saat Ini</h2><p id="saldo" class="text-blue-600 text-xl">Rp 0</p></div>
-      <div class="bg-white shadow p-4 text-center"><h2>Jumlah Transaksi</h2><p id="transaksi" class="text-gray-600 text-xl">0</p></div>
-    </section>
-
+<!-- Dashboard -->
+<section id="dashboard" class="hidden">
+  <!-- Ringkasan Keuangan -->
+  <section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
+    <div class="bg-white shadow p-4 text-center"><h2>Total Pemasukan</h2><p id="pemasukan" class="text-green-600 text-xl">Rp 0</p></div>
+    <div class="bg-white shadow p-4 text-center"><h2>Total Pengeluaran</h2><p id="pengeluaran" class="text-red-600 text-xl">Rp 0</p></div>
+    <div class="bg-white shadow p-4 text-center"><h2>Saldo Saat Ini</h2><p id="saldo" class="text-blue-600 text-xl">Rp 0</p></div>
+    <div class="bg-white shadow p-4 text-center"><h2>Jumlah Transaksi</h2><p id="transaksi" class="text-gray-600 text-xl">0</p></div>
+  </section>
+</section>
     <!-- Kartu Ringkasan Dinamis -->
     <section id="kartuRingkasan" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6">
       <div class="bg-white shadow p-4 text-center"><h2 class="font-bold">Total Pemasukan</h2><p id="pemasukanKategori" class="text-green-600 text-xl">Rp 0</p></div>
