@@ -1,4 +1,4 @@
-// Data awal
+// ===== DATA AWAL =====
 const transaksi = [
   {tanggal: "10/05/2026", deskripsi: "Iuran Gentong", nominal: 800000, kategori: "Gentong", pengguna: "Amal", kelas: "4A"},
   {tanggal: "20/05/2026", deskripsi: "Pembelian Peralatan", nominal: -500000, kategori: "Dapur", pengguna: "Gentong", kelas: "4A"},
@@ -6,6 +6,8 @@ const transaksi = [
 ];
 
 let totalPemasukan = 0, totalPengeluaran = 0, saldo = 0;
+let kategoriAktif = "";
+let kelasAktif = "";
 
 // ===== LOGIN =====
 function login() {
@@ -16,11 +18,46 @@ function login() {
     document.getElementById("loginPage").classList.add("hidden");
     document.getElementById("dashboard").classList.remove("hidden");
     updateRingkasan();
-    isiTabel();
+    tampilkanTransaksi();   // gunakan fungsi filter
     buatChart();
   } else {
     document.getElementById("loginError").classList.remove("hidden");
   }
+}
+
+// ===== FILTER =====
+function filterKategori(kat) {
+  kategoriAktif = kat;
+  tampilkanTransaksi();
+}
+
+function filterByKelas() {
+  kelasAktif = document.getElementById("kelasFilter").value;
+  tampilkanTransaksi();
+}
+
+// ===== TAMPILKAN TRANSAKSI =====
+function tampilkanTransaksi() {
+  const tbody = document.getElementById("tabelTransaksi");
+  tbody.innerHTML = "";
+
+  transaksi.forEach(t => {
+    if (kategoriAktif && t.kategori !== kategoriAktif) return;
+    if (kelasAktif) {
+      const kelasNum = parseInt(t.kelas);
+      if (kelasNum != kelasAktif) return;
+    }
+
+    let row = `<tr>
+      <td class="border px-2">${t.tanggal}</td>
+      <td class="border px-2">${t.deskripsi}</td>
+      <td class="border px-2">Rp ${t.nominal.toLocaleString()}</td>
+      <td class="border px-2">${t.kategori}</td>
+      <td class="border px-2">${t.pengguna}</td>
+      <td class="border px-2">${t.kelas}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
 }
 
 // ===== RINGKASAN =====
@@ -33,23 +70,6 @@ function updateRingkasan() {
   document.getElementById("pengeluaran").innerText = "Rp " + Math.abs(totalPengeluaran).toLocaleString();
   document.getElementById("saldo").innerText = "Rp " + saldo.toLocaleString();
   document.getElementById("transaksi").innerText = transaksi.length;
-}
-
-// ===== TABEL =====
-function isiTabel() {
-  const tbody = document.getElementById("tabelTransaksi");
-  tbody.innerHTML = "";
-  transaksi.forEach(t => {
-    let row = `<tr>
-      <td class="border px-2">${t.tanggal}</td>
-      <td class="border px-2">${t.deskripsi}</td>
-      <td class="border px-2">Rp ${t.nominal.toLocaleString()}</td>
-      <td class="border px-2">${t.kategori}</td>
-      <td class="border px-2">${t.pengguna}</td>
-      <td class="border px-2">${t.kelas}</td>
-    </tr>`;
-    tbody.innerHTML += row;
-  });
 }
 
 // ===== CHART =====
@@ -96,7 +116,7 @@ function simpanTransaksi() {
 
   transaksi.push({tanggal: tgl, deskripsi: desk, nominal: nominal, kategori: kategori, pengguna: pengguna, kelas: kelas});
 
-  isiTabel();
+  tampilkanTransaksi();   // gunakan filter
   updateRingkasan();
   closeForm();
 }
@@ -120,7 +140,6 @@ function downloadPDF() {
     doc.text("Saldo Saat Ini: Rp " + saldo.toLocaleString(), 20, 80);
     doc.text("Jumlah Transaksi: " + transaksi.length, 20, 90);
 
-    // Grafik
     const barCanvas = document.getElementById("barChart");
     const barImg = barCanvas.toDataURL("image/png", 1.0);
     doc.addImage(barImg, "PNG", 20, 100, 80, 60);
@@ -129,7 +148,6 @@ function downloadPDF() {
     const pieImg = pieCanvas.toDataURL("image/png", 1.0);
     doc.addImage(pieImg, "PNG", 120, 100, 80, 60);
 
-    // Tabel transaksi
     let startY = 170;
     doc.text("Daftar Transaksi:", 20, startY);
     startY += 10;
@@ -147,7 +165,6 @@ function downloadPDF() {
       }
     });
 
-    // Footer tanda tangan
     let tanggal = new Date().toLocaleDateString("id-ID", {
       day: "numeric", month: "long", year: "numeric"
     });
