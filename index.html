@@ -65,11 +65,22 @@
       <div class="bg-white shadow p-4 text-center"><h2>Jumlah Transaksi</h2><p id="transaksi" class="text-gray-600 text-xl">0</p></div>
     </section>
 
-    <!-- Grafik -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-      <div class="bg-white shadow p-4"><h2>Grafik Pemasukan & Pengeluaran</h2><canvas id="barChart"></canvas></div>
-      <div class="bg-white shadow p-4"><h2>Rincian Kategori Dana</h2><canvas id="pieChart"></canvas></div>
-    </section>
+   <!-- Kartu Ringkasan Dinamis -->
+<section id="kartuRingkasan" class="grid grid-cols-1 md:grid-cols-3 gap-4 p-6">
+  <div class="bg-white shadow p-4 text-center">
+    <h2 class="font-bold">Total Pemasukan</h2>
+    <p id="pemasukanKategori" class="text-green-600 text-xl">Rp 0</p>
+  </div>
+  <div class="bg-white shadow p-4 text-center">
+    <h2 class="font-bold">Total Pengeluaran</h2>
+    <p id="pengeluaranKategori" class="text-red-600 text-xl">Rp 0</p>
+  </div>
+  <div class="bg-white shadow p-4 text-center">
+    <h2 class="font-bold">Saldo Saat Ini</h2>
+    <p id="saldoKategori" class="text-blue-600 text-xl">Rp 0</p>
+  </div>
+</section>
+
 <!-- Tab Navigasi Transaksi -->
 <div class="flex gap-2 mb-4">
   <button onclick="filterKategori('Gentong')" class="bg-blue-500 text-white px-4 py-2 rounded">Gentong</button>
