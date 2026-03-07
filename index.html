@@ -24,18 +24,26 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-   <!-- Halaman Login -->
-  <section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-blue-100">
-    <!-- Logo -->
-    <div class="flex gap-6 mb-4">
-      <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-20 h-20">
-      <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-20 h-20">
+<body class="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500">
+
+  <!-- Halaman Login -->
+  <section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-opacity-90">
+    
+    <!-- Logo + Judul Instansi -->
+    <div class="flex flex-col items-center mb-6 text-white">
+      <div class="flex gap-6 mb-4">
+        <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-24 h-24">
+        <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-24 h-24">
+      </div>
+      <h2 class="judul-instansi">PEMERINTAH KABUPATEN WONOSOBO</h2>
+      <h3 class="judul-instansi">DINAS PENDIDIKAN PEMUDA DAN OLAHRAGA</h3>
+      <h3 class="judul-instansi">SD NEGERI WONOKERTO</h3>
+      <p class="alamat">Jl. Sukoharjo Km 03 Desa Wonokerto Kecamatan Leksono Kode Pos 56362</p>
     </div>
 
-    <!-- Sapaan -->
-    <h2 class="text-center text-xl font-bold mb-4 text-blue-700">
-      SELAMAT DATANG DI SISTEM KEUANGAN SD NEGERI WONOKERTO
+    <!-- Sapaan Sistem -->
+    <h2 class="judul-sapaan">
+      SISTEM | KEUANGAN | SD NEGERI WONOKERTO | 2026
     </h2>
 
     <!-- Form Login -->
@@ -47,14 +55,15 @@
     </div>
   </section>
 
+  <script src="js/index.js"></script>
+</body>
   <!-- Dashboard -->
   <section id="dashboard" class="hidden">
-    <!-- Header, Ringkasan, Grafik, Tabel dst -->
+    <!-- isi dashboard -->
   </section>
 
   <script src="js/index.js"></script>
 </body>
-
 
     <!-- Ringkasan Keuangan -->
     <section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
@@ -157,4 +166,3 @@
   <script src="js/index.js"></script>
 </body>
 </html>
-
