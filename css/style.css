@@ -1,15 +1,30 @@
 <style>
+  /* Container kop instansi */
+  .kop-instansi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo kiri & kanan */
+    width: 100%;
+    padding: 0 40px;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  /* Judul instansi di tengah */
+  .kop-instansi .judul {
+    text-align: center;
+    flex: 1; /* biar teks di tengah */
+  }
+
   .judul-instansi {
     font-size: 1.2rem;
     font-weight: bold;
-    text-align: center;
     margin: 4px 0;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
   }
 
   .alamat {
     font-size: 0.9rem;
-    text-align: center;
     margin-top: 6px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   }
@@ -23,7 +38,7 @@
     padding: 20px;
     background: linear-gradient(to right, #93c5fd, #bfdbfe);
     border-radius: 12px;
-    margin-bottom: 25px;
+    margin-top: 15px;
     text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
     animation: fadeIn 2s ease-in-out;
   }
