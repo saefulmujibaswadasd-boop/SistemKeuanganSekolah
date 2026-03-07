@@ -1,1 +1,23 @@
-style.css
+<style>
+  /* Judul sapaan login */
+  #loginPage h2 {
+    font-size: 2.2rem;          /* lebih besar */
+    font-weight: bold;          /* tebal */
+    color: #1e40af;             /* biru tua */
+    text-align: center;         /* rata tengah */
+    width: 100%;                /* lebar penuh */
+    padding: 30px 20px;         /* tinggi lebih besar (atas-bawah) */
+    line-height: 2.6rem;        /* jarak antar baris lebih lega */
+    background: linear-gradient(to right, #93c5fd, #bfdbfe);
+    border-radius: 12px;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3); /* efek bayangan */
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  /* Animasi masuk */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
