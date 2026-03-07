@@ -26,10 +26,21 @@
 </head>
 <body class="bg-gray-100">
 
-  <!-- Halaman Login -->
-  <section id="loginPage" class="h-screen flex items-center justify-center bg-blue-100">
+   <!-- Halaman Login -->
+  <section id="loginPage" class="h-screen flex flex-col items-center justify-center bg-blue-100">
+    <!-- Logo -->
+    <div class="flex gap-6 mb-4">
+      <img src="assets/logo_sekolah.png" alt="Logo Sekolah" class="w-20 h-20">
+      <img src="assets/logo_pemkab.png" alt="Logo Pemkab" class="w-20 h-20">
+    </div>
+
+    <!-- Sapaan -->
+    <h2 class="text-center text-xl font-bold mb-4 text-blue-700">
+      SELAMAT DATANG DI SISTEM KEUANGAN SD NEGERI WONOKERTO
+    </h2>
+
+    <!-- Form Login -->
     <div class="bg-white shadow-lg p-6 rounded w-96">
-      <h2 class="text-center text-xl font-bold mb-4">Login Sistem Keuangan</h2>
       <input id="username" type="text" placeholder="Username" class="w-full border p-2 mb-2 rounded">
       <input id="password" type="password" placeholder="Password" class="w-full border p-2 mb-4 rounded">
       <button onclick="login()" class="w-full bg-blue-600 text-white py-2 rounded">LOGIN</button>
@@ -39,10 +50,12 @@
 
   <!-- Dashboard -->
   <section id="dashboard" class="hidden">
-    <!-- Header -->
-    <header class="bg-blue-600 text-white p-4 text-center">
-      <h1 class="text-2xl font-bold">Sistem Keuangan SD NEGERI WONOKERTO</h1>
-    </header>
+    <!-- Header, Ringkasan, Grafik, Tabel dst -->
+  </section>
+
+  <script src="js/index.js"></script>
+</body>
+
 
     <!-- Ringkasan Keuangan -->
     <section class="grid grid-cols-1 md:grid-cols-4 gap-4 p-6">
